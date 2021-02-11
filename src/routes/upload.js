@@ -55,6 +55,8 @@ router.get('/', (req, res) => {
 
 router.post("/", async (req, res) => {
     const File = req.files.file;
+    File.name = req.body.dirName + "." + (File.name.split('.').slice(1).join('.'));
+
     const PATH = `./src/public/UPLOAD/`;
     let sf;
     if(Array.isArray(File)) sf = await SaveFiles(PATH, File);
