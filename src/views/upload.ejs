@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload file</title>
+</head>
+<body>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <select required name="type">
+            <option value="other">Other</option>
+            <optgroup label="Library">
+                <option value="lib/mod">Module</option>
+            </optgroup>
+        </select>
+        <input type="text" required id="dirName" name="dirName" placeholder="Name of directory">
+        <input required type="file" name="file" multiple>
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>

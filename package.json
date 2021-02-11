@@ -1,21 +1,19 @@
 {
-  "name": "file-storage",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "file-storage-file-storage-0---heroku",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node src/bin/www",
+    "dev": "nodemon src/bin/www"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "body-parse": "^0.1.0",
     "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "html": "^1.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7"
+    "cookie-parser": "^1.4.5",
+    "debug": "^2.6.9",
+    "ejs": "^2.6.2",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.2.1",
+    "http-errors": "^1.6.3",
+    "morgan": "^1.9.1"
   }
 }
