@@ -11,15 +11,18 @@ function Resolve(data) {
 
 const router = Router();
 router.get("/", async (req, res) => {
-    const data = (await getAll()).data;
-    if(data.success) {
-        res.locals.files = data.map(Resolve);
+    const r = (await getAll());
+    if(r.success) {
+        res.locals.files = r.data.map(Resolve);
         res.status(200);
         res.render('files');
     } else {
         res.locals.message = "Error";
-        res.locals.error = data.data;
-        res.status(data.data.status);
+        res.locals.error = r.data;
+
+        console.log(r);
+
+        res.status(r.data.status);
         res.render("error");
     }
 })
