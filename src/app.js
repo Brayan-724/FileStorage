@@ -29,8 +29,9 @@ const db = require('./helpers/mongo')(process.env.DB_URL);
 // Add Routes
 app.use('/', Routes.indexR);
 app.use('/fl', Routes.filesR);
-app.use('/upload', Routes.uploadR);
+app.use('/u', Routes.uploadR);
 app.use('/f', Routes.viewFileR);
+app.use('/r', Routes.removeR);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

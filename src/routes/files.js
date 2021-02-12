@@ -20,8 +20,6 @@ router.get("/", async (req, res) => {
         res.locals.message = "Error";
         res.locals.error = r.data;
 
-        console.log(r);
-
         res.status(r.data.status);
         res.render("error");
     }
