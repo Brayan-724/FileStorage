@@ -1,5 +1,5 @@
 {
-  "name": "file-storage-file-storage-0---heroku",
+  "name": "file-storage-0",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,10 +11,12 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "debug": "^2.6.9",
+    "dotenv": "^8.2.0",
     "ejs": "^2.6.2",
     "express": "^4.16.4",
     "express-fileupload": "^1.2.1",
     "http-errors": "^1.6.3",
+    "mongoose": "^5.11.15",
     "morgan": "^1.9.1"
   },
   "devDependencies": {

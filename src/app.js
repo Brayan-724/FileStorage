@@ -4,11 +4,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const fileUpload = require('express-fileupload');
+const mongoose = require('mongoose');
+require('dotenv').config({path: 'variables.env'});
 
-
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const uploadRouter = require('./routes/upload');
+// Import routes
+const Routes = require('./Routes');
 
 const app = express();
 
@@ -23,9 +23,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/upload', uploadRouter);
+// Init mongo database
+const db = require('./helpers/mongo')(process.env.DB_URL);
+
+// Add Routes
+app.use('/', Routes.indexR);
+app.use('/fl', Routes.filesR);
+app.use('/upload', Routes.uploadR);
+app.use('/f', Routes.viewFileR);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

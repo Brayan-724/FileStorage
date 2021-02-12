@@ -1,5 +1,7 @@
 const { Router } = require("express");
 const fileUpload = require("express-fileupload");
+const CTRL = require('../models/file/controller');
+const MD = require('../models/file/model');
 const router = Router();
 const fs = require('fs');
 
@@ -23,6 +25,30 @@ function SaveFile(Path, File) {
         if(e) {
             console.log(Path);
         }
+
+        const a = await CTRL.getBy({fileName: File.name});
+        if(a.success && a.data.length > 0) {
+            a.data.forEach(e => {
+                CTRL.remove(e._id);
+            })
+        }
+
+        const m = await CTRL.add({
+            url: '/f/' + File.name,
+            fileName: File.name,
+            file: new MD.File({
+                data: File.data,
+                name: File.name,
+                type: File.mimetype
+            }),
+            proyect: {
+                path: Path,
+                name: 'NoName'
+            }
+        });
+        if(!m.success) {
+            console.error(m.data);
+        } 
 
         File.mv(Path + File.name, (err) => {
             if(err) return res({err, up: false});
@@ -63,9 +89,9 @@ router.post("/", async (req, res) => {
     else sf = await SaveFile(PATH, File);
 
     if(sf.up) {
-        res.status(200).send('Great');
+        res.status(200).render('uploaded');
     } else {
-        res.status(500).send({message: sf.err});
+        res.status(500).render('error', {message: sf.err.message, error: sf.err})
     };
 });
 
