@@ -12,10 +12,16 @@ function Resolve(data) {
 const router = Router();
 router.get("/", async (req, res) => {
     const data = (await getAll()).data;
-    res.locals.files = data.map(Resolve);
-
-    res.status(200);
-    res.render('files');
+    if(data.success) {
+        res.locals.files = data.map(Resolve);
+        res.status(200);
+        res.render('files');
+    } else {
+        res.locals.message = "Error";
+        res.locals.error = data.data;
+        res.status(data.data.status);
+        res.render("error");
+    }
 })
 
 module.exports = router;
