@@ -8,20 +8,57 @@
     <%- include('../partials/nav', {active:'u'}) -%>
     <div class="container">
         <form class="row g-3 needs-validation" novalidate action="/u" method="post" enctype="multipart/form-data">
-            <select class="form-select" required name="type">
-                <option value="other">Other</option>
-                <optgroup label="Library">
-                    <option value="lib/mod">Module</option>
-                </optgroup>
-            </select>
-            <label for="dirName" class="form-label"> File Name </label>
-            <input type="text" class="form-control" required id="dirName" name="dirName">
+            <div class="col-md-5">
+                <label for="type" class="form-label"> Select category </label>
+                <select class="form-select" id="type" required name="type">
+                    <option value="other">Other</option>
+                    <optgroup label="Library">
+                        <option value="lib/mod">Module</option>
+                    </optgroup>
+                </select>
+            </div>
 
+            <div class="col-md-5">
+                <label for="dirName" class="form-label"> File Name </label>
+                <input type="text" class="form-control" required id="dirName" name="dirName">
+                <div class="invalid-feedback">
+                    Write the name of file.
+                    Remember, the name is before of the first dot (here.*)
+                </div>
+            </div>
 
             <input class="form-control" required type="file" name="file">
+            <div class="invalid-feedback">
+                Upload file
+            </div>
             
             <button type="submit" class="btn btn-primary"> Upload File </button>
         </form>
     </div>
+
+    <%- include('../partials/footer') -%>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+            })
+        })()
+    </script>
 </body>
 </html>
