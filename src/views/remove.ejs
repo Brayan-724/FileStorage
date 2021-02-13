@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/header') -%>
+
     <title> Removing <%= fileName %></title>
 </head>
-<body>
-    <form action="/r/<%= fileName %>" method="post">
-        <button type="submit">Borrar</button>
-        <a href="/">Cancelar</a>
-    </form>
+<body class="bg-secondary">
+    <div class="container text-center">
+        <div class="rounded-3 position-absolute top-50 start-50 translate-middle bg-light">
+            <div class="m-4">
+                <form action="/r/<%= fileName %>" method="post">
+                    <div class="fs-1 text-warp">
+                        Estas seguro de borrar <%= fileName %>?
+                    </div>
+                    <div class="btn-group" role="group">
+                            <button class="btn btn-danger" type="submit">Borrar</button>
+                            <a href="/" class="btn btn-primary" role="button">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

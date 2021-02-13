@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <%- include('../partials/header') -%>
         <title> All Files </title>
     </head>
     <body>
-        <ul>
-            <% files.forEach(function(file) { %>
-                <li><a href="<%= file.url %>"><%= file.name %></a><br><a href="/r/<%= file.name %>">Borrar</a></li><br>
+        <a href="/">Menu</a>
+        <div class="list-group">
+            <% let i=0; files.forEach(function(file) { %>
+                <div class="card card-body">
+                    <a class="btn bt-primary" data-bs-toggle="collapse" aria-expanded="false" href="#View<%= i %>"  aria-controls="View<%= i %>" role="button"><%= file.name %></a>
+                    <div class="collapse" id="View<%= i %>">
+                        <div class="card card-body">
+                            <a href="/f/<%= file.name %>" type="button" class="btn btn-primary">View</a>
+                            <a href="/r/<%= file.name %>" type="button" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                    <% i++ %>
+                </div>
             <% }) %>
         </ul>
     </body>

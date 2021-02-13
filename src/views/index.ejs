@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> - Index - </title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../partials/header') -%>
+	<title> - Index - </title>
   </head>
   <body>
-      <div>
-        <h1> Files Storage (0) </h1>
-        <ul>
-          <li><a href="/u"> Upload File </a></li>
-          <li><a href="/fl"> Files </a></li>
-          <li><a href="/rl"> Remove (Deprecated) </a></li>
-        </ul>
-      </div>
+	  <div class="container">
+		<h1 class="text-center"> Files Storage (0) </h1>
+		
+		<div>
+			<div class="list-group">
+				<a href="/u"  class="list-group-item list-group-item-action"> <span> Upload File </span></a>
+				<a href="/fl" class="list-group-item list-group-item-action"> <span> Files </span></a>
+				<a href="/rl" class="list-group-item list-group-item-action"> <span> Remove (Deprecated) </span></a>
+			</div>
+		</div>
+	  </div>
   </body>
 </html>
