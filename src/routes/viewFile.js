@@ -5,7 +5,6 @@ const router = express.Router();
 router.get('/:fileName', async (req, res) => {
     const fileName = req.params.fileName;
     const file = await getBy({fileName: fileName});
-    console.log(file.data);
     if(file.success && file.data.length > 0) {
         res.type(file.data[0].file.type).status(200).send(file.data[0].file.data);
     } else {

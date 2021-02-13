@@ -5,20 +5,22 @@
         <title> All Files </title>
     </head>
     <body>
-        <a href="/">Menu</a>
-        <div class="list-group">
-            <% let i=0; files.forEach(function(file) { %>
-                <div class="card card-body">
-                    <a class="btn bt-primary" data-bs-toggle="collapse" aria-expanded="false" href="#View<%= i %>"  aria-controls="View<%= i %>" role="button"><%= file.name %></a>
-                    <div class="collapse" id="View<%= i %>">
-                        <div class="card card-body">
-                            <a href="/f/<%= file.name %>" type="button" class="btn btn-primary">View</a>
-                            <a href="/r/<%= file.name %>" type="button" class="btn btn-danger">Delete</a>
+        <%- include('../partials/nav', {active: 'fl'}) -%>
+        <div class="container text-center">
+            <div class="list-group">
+                <% let i=0; files.forEach(function(file) { %>
+                    <div class="card card-body">
+                        <a class="btn bt-primary" data-bs-toggle="collapse" aria-expanded="false" href="#View<%= i %>"  aria-controls="View<%= i %>" role="button"><%= file.name %></a>
+                        <div class="collapse" id="View<%= i %>">
+                            <div class="card card-body">
+                                <a href="/f/<%= file.name %>" type="button" class="btn btn-primary">View</a>
+                                <a href="/r/<%= file.name %>" type="button" class="btn btn-danger">Delete</a>
+                            </div>
                         </div>
+                        <% i++ %>
                     </div>
-                    <% i++ %>
-                </div>
-            <% }) %>
-        </ul>
+                <% }) %>
+            </div>
+        </div>
     </body>
 </html>
