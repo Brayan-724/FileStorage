@@ -21,7 +21,79 @@
                     </div>
                 <% }) %>
             </div>
+            <button type="button" class=" my-4 btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Test
+            </button>
         </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Choose a filter options: </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <select id="O">
+                        <option value="null" selected disabled> Choose a type </option>
+                        <option value="img"> Images </option>
+                        <option value="script"> Scripts </option>
+                        <option value="ALL"> All </option>
+                    </select>
+
+                    <select id="S">
+                        <option value="null" selected disabled> Choose a sort </option>
+                        <option value="ALL"> Default </option>
+                        <option value="AZ"> A-Z </option>
+                        <option value="ZA"> Z-A </option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="BtnUpdateFilters">Save changes</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <script>
+            const btn_updateFilters = document.querySelector(".modal #BtnUpdateFilters");
+            
+            btn_updateFilters.onclick = () => {
+                const O = document.getElementById("O");
+                const S = document.getElementById("S");
+                let outO;
+                let outS;
+
+                if(O.value === "null" || O.value === "ALL") {
+                    outO = null;
+                } else {
+                    outO = [O.value];
+                }
+
+                if(S.value === "null" || S.value === "ALL") {
+                    outS = null;
+                } else {
+                    outS = S.value;
+                }
+
+                SendUpdateFilters({
+                    only: outO,
+                    sort: outS
+                })
+            }
+
+            function SendUpdateFilters(options) {
+                const only = options.only ? "only=" + encodeURIComponent(options.only.join("_")) : null;
+                const sort = options.sort ? "sort=" + encodeURIComponent(options.sort) : null;
+
+                const search = "?" + [only, sort].filter(e => typeof e !== "object" && e !== null).join("&");
+
+                window.location = "/fl" + search;
+            }
+        </script>
+
         <%- include('../partials/footer') -%>
     </body>
 </html>

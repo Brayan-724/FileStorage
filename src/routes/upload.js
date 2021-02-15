@@ -14,6 +14,39 @@ function DExist(Path) {
         })
     });
 }
+
+/**
+ * 
+ * @param {String} mimeType
+ * 
+ * @returns {String[]} 
+ */
+function parseType(mimeType) {
+    const types = [
+        {
+            q: ["image\/*"],
+            o: "img"
+        },
+        {
+            q: ["text\/*"],
+            o: "script"
+        },
+        {
+            q: ["audio\/*"],
+            o: "audio"
+        }
+    ];
+
+    const out = [];
+    types.forEach((e) => {
+        const rex = new RegExp(e.q, "");
+        if(rex.test(mimeType)) {
+            out.push(e.o);
+        }
+    });
+
+    return out;
+}
 /**
  * 
  * @param {string} Path 
@@ -36,6 +69,7 @@ function SaveFile(Path, File) {
         const m = await CTRL.add({
             url: '/f/' + File.name,
             fileName: File.name,
+            smType: parseType(File.mimetype),
             file: new MD.File({
                 data: File.data,
                 name: File.name,
