@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <%- include('../partials/header') -%>
         <title><%= message %></title>
         <style>
             body {
@@ -11,12 +10,13 @@
         </style>
     </head>
     <body>
+        <%- include('../partials/nav', {active: ''}) -%>
         <h1><%= message %>: <%= error.status %></h1>
         <p>
             <span>Stack:</span>
             <pre><%= error.stack %></pre>
         </p>
-        <a href="/">Menu</a>
+        <a href="/" class="btn btn-primary">Go to Menu</a>
         <%- include('../partials/footer') -%>
     </body>
 </html>
