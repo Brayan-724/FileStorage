@@ -1,182 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%- include('../partials/header') -%>
-        <title> All Files </title>
-    </head>
-    <body>
-        <%- include('../partials/nav', {active: 'fl'}) -%>
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-10 text-start">
-                    <span class="fs-3">List of Files</span>
-                </div>
-                <div class="col-2">
-                    <button type="button" class="my-1 float-end btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        <i class="bi bi-funnel-fill"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="list-group shadow">
-                <% let i=0; files.forEach(function(file) { %>
-                    <div class="card card-body">
-                        <a class="btn bt-primary" data-bs-toggle="collapse" aria-expanded="false" href="#View<%= i %>"  aria-controls="View<%= i %>" role="button"><%= file.name %></a>
-                        <div class="collapse mt-1" id="View<%= i %>">
-                            <div class="card card-body shadow">
-                                <a href="/f/<%= file.name %>" type="button" class="btn btn-primary">View</a>
-                                <a href="/r/<%= file.name %>" type="button" class="btn btn-danger">Delete</a>
-                            </div>
-                        </div>
-                        <% i++ %>
-                    </div>
-                <% }) %>
-            </div>
-        </div>
-        
-        <!-- Fliter Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Choose filter options: </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <select id="O">
-                        <option value="null" selected disabled> Choose a type </option>
-                        <option value="img"> Images </option>
-                        <option value="script"> Scripts </option>
-                        <option value="ALL"> All </option>
-                    </select>
+	<head>
+		<%- include('../partials/header') -%>
+		<title> All Files </title>
+	</head>
+	<body>
+		<%- include('../partials/nav', {active: 'fl'}) -%>
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-10 text-start">
+					<span class="fs-3">List of Files</span>
+				</div>
+				<div class="col-2">
+					<button type="button" class="my-1 float-end btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+						<i class="bi bi-funnel-fill"></i>
+					</button>
+				</div>
+			</div>
+			<div class="list-group shadow">
+				<% let i=0; files.forEach(function(file) { %>
+					<div class="card card-body">
+						<a class="btn bt-primary" data-bs-toggle="collapse" aria-expanded="false" href="#View<%= i %>"  aria-controls="View<%= i %>" role="button"><%= file.name %></a>
+						<div class="collapse mt-1" id="View<%= i %>">
+							<div class="card card-body shadow">
+								<a href="/f/<%= file.name %>" type="button" class="btn btn-primary">View</a>
+								<a href="/r/<%= file.name %>" type="button" class="btn btn-danger">Delete</a>
+							</div>
+						</div>
+						<% i++ %>
+					</div>
+				<% }) %>
+			</div>
+		</div>
+		
+		<!-- Fliter Modal -->
+		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Choose filter options: </h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<select id="O">
+						<option value="null" selected disabled> Choose a type </option>
+						<option value="img"> Images </option>
+						<option value="script"> Scripts </option>
+						<option value="ALL"> All </option>
+					</select>
 
-                    <div class="container mt-2">
-                        <div class="card card-content shadow">
-                            <div class="card-header shadow-sm"> Choose Sort </div>
-                            <div class="card-body">
-                                <div class="row fs-4">
-                                    <div class="col">
-                                        <button class="btn btn-primary BTN-SD">
-                                            <i class="bi bi-eraser" title="Default"></i>
-                                        </button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="btn btn-secondary BTN-AZ">
-                                            <i class="bi bi-sort-alpha-down" title="A to Z"></i>
-                                        </button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="btn btn-secondary BTN-ZA">
-                                            <i class="bi bi-sort-alpha-up" title="Z to A"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Discard</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="BtnUpdateFilters">Save changes</button>
-                </div>
-            </div>
-            </div>
-        </div>
+					<div class="container mt-2">
+						<div class="card card-content shadow">
+							<div class="card-header shadow-sm"> Choose Type </div>
+							<div class="card-body">
+								<div class="row fs-4">
+									<div class="col">
+										<button class="btn btn-primary BTN-TD">
+											<i class="bi bi-eraser" title="Default"></i>
+											<span class="fs-6">Default</span>
+										</button>
+									</div>
+									<div class="col">
+										<button class="btn btn-secondary BTN-CODE">
+											<i class="bi bi-file-code" title="Scripts"></i>
+											<span class="fs-6">Script</span>
+										</button>
+									</div>
+									<div class="col">
+										<button class="btn btn-secondary BTN-IMG">
+											<i class="bi bi-file-image" title="Images"></i>
+											<span class="fs-6">Image</span>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-        <script>
-            const btn_updateFilters = document.querySelector(".modal #BtnUpdateFilters");
-            const btn_az = document.querySelector(".modal .BTN-AZ");
-            const btn_za = document.querySelector(".modal .BTN-ZA");
-            const btn_sd = document.querySelector(".modal .BTN-SD");
+					<div class="container mt-2">
+						<div class="card card-content shadow">
+							<div class="card-header shadow-sm"> Choose Sort </div>
+							<div class="card-body">
+								<div class="row fs-4">
+									<div class="col">
+										<button class="btn btn-primary BTN-SD">
+											<i class="bi bi-eraser" title="Default"></i>
+											<span class="fs-6">Default</span>
+										</button>
+									</div>
+									<div class="col">
+										<button class="btn btn-secondary BTN-AZ">
+											<i class="bi bi-sort-alpha-down" title="A to Z"></i>
+											<span class="fs-6">A to Z</span>
+										</button>
+									</div>
+									<div class="col">
+										<button class="btn btn-secondary BTN-ZA">
+											<i class="bi bi-sort-alpha-up" title="Z to A"></i>
+											<span class="fs-6">Z to A</span>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Discard</button>
+					<button type="button" class="btn btn-primary" aria-disabled="true" disabled data-bs-dismiss="modal" id="BtnUpdateFilters">Save changes</button>
+				</div>
+			</div>
+			</div>
+		</div>
 
-            btn_sd.onclick = () => {
-                if(!btn_sd.classList.contains('btn-primary')) {
-                    btn_sd.classList.add('btn-primary');
-                    btn_sd.classList.remove('btn-secondary');
-                    
-                    btn_za.classList.remove('btn-primary');
-                    btn_za.classList.add('btn-secondary');
+		<script>
+			const SORTED = getParam('sort');
+			const TYPED = getParam('only');
+			const btn_updateFilters = document.querySelector(".modal #BtnUpdateFilters");
 
-                    btn_az.classList.remove('btn-primary');
-                    btn_az.classList.add('btn-secondary');
-                }
-            }
+			// Getting sort buttons
+			const btn_az = document.querySelector(".modal .BTN-AZ");
+			const btn_za = document.querySelector(".modal .BTN-ZA");
+			const btn_sd = document.querySelector(".modal .BTN-SD");
+			
+			// Getting type buttons
+			const btn_img = document.querySelector(".modal .BTN-IMG");
+			const btn_code = document.querySelector(".modal .BTN-CODE");
+			const btn_td = document.querySelector(".modal .BTN-TD");
 
-            btn_az.onclick = () => {
-                if(btn_az.classList.contains('btn-primary')) {
-                    btn_az.classList.remove('btn-primary');
-                    btn_az.classList.add('btn-secondary');
-                    
-                    btn_sd.classList.add('btn-primary');
-                    btn_sd.classList.remove('btn-secondary');
-                } else {
-                    btn_az.classList.add('btn-primary');
-                    btn_az.classList.remove('btn-secondary');
-                    
-                    btn_za.classList.remove('btn-primary');
-                    btn_za.classList.add('btn-secondary');
+			// Setting functions to buttons
+			const sort_btns = [btn_az, btn_sd, btn_za];
+			btn_az.onclick = BtnToggleClick(btn_az, btn_sd, sort_btns);
+			btn_za.onclick = BtnToggleClick(btn_za, btn_sd, sort_btns);
+			btn_sd.onclick = BtnToggleClick(btn_sd, btn_sd, sort_btns);
 
-                    btn_sd.classList.remove('btn-primary');
-                    btn_sd.classList.add('btn-secondary');
-                }
-            }
+			// Setting functions to buttons
+			const type_btns = [btn_img,  btn_code];
+			btn_img.onclick = 	BtnsToggleClick(btn_img, btn_td, type_btns);
+			btn_code.onclick = 	BtnsToggleClick(btn_code, btn_td, type_btns);
+			btn_td.onclick = 	BtnsToggleClick(btn_td, btn_td, type_btns);
 
-            btn_za.onclick = () => {
-                if(btn_za.classList.contains('btn-primary')) {
-                    btn_za.classList.remove('btn-primary');
-                    btn_za.classList.add('btn-secondary');
-                    
-                    btn_sd.classList.add('btn-primary');
-                    btn_sd.classList.remove('btn-secondary');
-                } else {
-                    btn_za.classList.add('btn-primary');
-                    btn_za.classList.remove('btn-secondary');
-                    
-                    btn_az.classList.remove('btn-primary');
-                    btn_az.classList.add('btn-secondary');
+			// If already are sorted then virtually press that button
+			if(SORTED) {
+				if(SORTED === "AZ") {
+					BtnToggle(btn_az, btn_sd, sort_btns);
+				} else 
+				if(SORTED === "ZA") {
+					BtnToggle(btn_za, btn_sd, sort_btns);
+				}
+			}
 
-                    btn_sd.classList.remove('btn-primary');
-                    btn_sd.classList.add('btn-secondary');
-                }
-            }
-            
+			// If already are sorted then virtually press that button
+			if(TYPED) {
+				if(TYPED.includes('script')) {
+					BtnsToggle(btn_code, btn_td, type_btns);
+				}
+				if(TYPED.includes('img')){
+					BtnsToggle(btn_img, btn_td, type_btns);
+				}
+			}
+			
 
-            btn_updateFilters.onclick = () => {
-                const O = document.getElementById("O");
-                const S = document.getElementById("S");
-                let outO;
-                let outS;
+			btn_updateFilters.onclick = () => {
+				let outO = [];
+				let outS = null;
 
-                if(O.value === "null" || O.value === "ALL") {
-                    outO = null;
-                } else {
-                    outO = [O.value];
-                }
+				if(isPressed(btn_td)) {
+					outO = null;
+				} else {
+					if(isPressed(btn_img)) outO.push('img');
+					if(isPressed(btn_code)) outO.push('script');
+				}
 
-                if(btn_sd.classList.contains('btn-primary')) {
-                    outS = null;
-                } else
-                if(btn_za.classList.contains('btn-primary')) {
-                    outS = "ZA"
-                } else {
-                    outS = 'ZA'
-                }
+				if(isPressed(btn_sd)) {
+					outS = null;
+				} else
+				if(isPressed(btn_za)) {
+					outS = "ZA"
+				} else {
+					outS = 'AZ'
+				}
 
-                SendUpdateFilters({
-                    only: outO,
-                    sort: outS
-                })
-            }
+				SendUpdateFilters({
+					only: outO,
+					sort: outS
+				})
+			}
 
-            function SendUpdateFilters(options) {
-                const only = options.only ? "only=" + encodeURIComponent(options.only.join("_")) : null;
-                const sort = options.sort ? "sort=" + encodeURIComponent(options.sort) : null;
+			function SendUpdateFilters(options) {
+				const only = options.only ? "only=" + encodeURIComponent(options.only.join("_")) : null;
+				const sort = options.sort ? "sort=" + encodeURIComponent(options.sort) : null;
 
-                const search = "?" + [only, sort].filter(e => typeof e !== "object" && e !== null).join("&");
+				const search = "?" + [only, sort].filter(e => typeof e !== "object" && e !== null).join("&");
 
-                window.location = "/fl" + search;
-            }
-        </script>
+				window.location = "/fl" + search;
+			}
 
-        <%- include('../partials/footer') -%>
-    </body>
+			/**
+			 * @param {HTMLButtonElement} Target
+			 * @param {HTMLButtonElement} Default
+			 * @param {HTMLButtonElement[]} All
+			 */
+			function BtnToggleClick(Target, Default, All) {
+				return () => {BtnToggle(Target, Default, All)}
+			}
+
+			/**
+			 * @param {HTMLButtonElement} Target
+			 * @param {HTMLButtonElement} Default
+			 * @param {HTMLButtonElement[]} All
+			 */
+			function BtnToggle(Target, Default, All) {
+				const P = isPressed(Target);
+				All.forEach(e => {
+					Select(e, false)
+				});
+
+				if(P) {
+					Select(Default);
+				} else {
+					Select(Target);
+				}
+
+				detectEnable();
+			}
+
+			/**
+			 * @param {HTMLButtonElement} Target
+			 * @param {HTMLButtonElement} Default
+			 * @param {HTMLButtonElement[]} Selectables
+			 */
+			 function BtnsToggleClick(Target, Default, Selectables) {
+				return () => {BtnsToggle(Target, Default, Selectables)}
+			}
+
+			/**
+			 * @param {HTMLButtonElement} Target
+			 * @param {HTMLButtonElement} Default
+			 * @param {HTMLButtonElement[]} Selectables
+			 */
+			function BtnsToggle(Target, Default, Selectables) {
+				const P = isPressed(Target);
+				if(!P) {
+					Select(Target);
+					Select(Default, false);
+				} else {
+					Select(Target, false);
+					if(!Selectables.some(e=>isPressed(e))) {
+						Select(Default);
+					}
+				}
+				detectEnable();
+			}
+
+			function detectEnable() {
+				Enable()
+			}
+			
+			function Enable() {
+				btn_updateFilters.removeAttribute('disabled')
+				btn_updateFilters.setAttribute('aria-disabled', 'false');
+				btn_updateFilters.classList.remove('disabled')
+			}
+
+			function Disable() {
+				btn_updateFilters.setAttribute('disabled', 'true')
+				btn_updateFilters.setAttribute('aria-disabled', 'true');
+				btn_updateFilters.classList.add('disabled')
+			}
+
+			/**
+			 * @param {HTMLButtonElement} btn
+			 */
+			function isPressed(btn) {
+				return btn.classList.contains('btn-primary');
+			}
+
+			/**
+			 * @param {HTMLButtonElement} btn
+			 * @param {boolean} active
+			 */
+			function Select(btn, active = true) {
+				if(active) {
+					btn.classList.add('btn-primary');
+					btn.classList.remove('btn-secondary');
+				} else {
+					btn.classList.remove('btn-primary');
+					btn.classList.add('btn-secondary');
+				}
+			}
+
+			/**
+			 * @param {string} str
+			 * @returns {string|null}
+			 */
+			function getParam(str) {
+				return new URL(window.location.href).searchParams.get(str);
+			}
+		</script>
+
+		<%- include('../partials/footer') -%>
+	</body>
 </html>
