@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/header.ejs") -%>
+    <title>Downloading <%= file.name %>...</title>
+</head>
+<body>
+    <%- include("../partials/nav.ejs", {active: ""}) -%>
+
+    <h1 class="text-center">Downloaded</h1>
+
+    <div class="text-center">
+        <a href="/" class="btn btn-primary">Go to menu</a>
+    </div>
+
+    <%- include("../partials/footer.ejs") -%>
+
+    <script>
+    const elm = document.createElement("a");
+    elm.setAttribute("href", "data:<%= file.type %>;base64,<%= file.buffer.toString('base64')%>")
+    elm.setAttribute('download', "<%= file.name %>");
+    elm.style.display = "none"; document.body.appendChild(elm); 
+    elm.click(); 
+    document.body.removeChild(elm);
+    </script>
+</body>
+</html>
