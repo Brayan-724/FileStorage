@@ -4,6 +4,7 @@ const filesR = require('./routes/files');
 const viewFileR = require('./routes/viewFile');
 const removeR = require('./routes/remove');
 const downloadR = require('./routes/download');
+const tmpR = require('./routes/tmp.js');
 
 module.exports = {
     indexR,
@@ -11,5 +12,6 @@ module.exports = {
     filesR,
     viewFileR,
     removeR,
-    downloadR
+    downloadR,
+    tmpR
 }

@@ -40,13 +40,26 @@ function SortAZ(data) {
             return B - A;
         }
     })
+};
+
+function Sorting(files, mode) {
+    if(mode !== "NONE") {
+        if(mode === "AZ") {
+            files = SortAZ(files);
+        } else 
+        if(mode === "ZA") {
+            files = SortAZ(files).reverse();
+        }
+    };
+
+    return files;
 }
 
 const router = Router();
 router.get("/", async (req, res) => {
     const r = (await getAll());
     if(r.success) {
-        const query = urlParse(req.url, true).query;
+        const query = req.query;
         query.only = query.only && query.only !== "null" ? query.only.split("_") : "ALL";
         query.sort = query.sort || "NONE";
 
@@ -63,14 +76,7 @@ router.get("/", async (req, res) => {
                 }) ? true : false
             });
         }
-        if(query.sort !== "NONE") {
-            if(query.sort === "AZ") {
-                outFile = SortAZ(outFiles);
-            } else 
-            if(query.sort === "ZA") {
-                outFiles = SortAZ(outFiles).reverse();
-            }
-        }
+        Sorting(outFiles)
 
         res.locals.files = outFiles.map(Resolve);
         res.status(200);
@@ -82,6 +88,8 @@ router.get("/", async (req, res) => {
         res.status(r.data.status);
         res.render("error");
     }
-})
+});
+
+router.get("/c/:path(*)", async (req, res) => {})
 
 module.exports = router;

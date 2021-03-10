@@ -20,7 +20,8 @@ const _Model = new Schema({
     fileName: String,
     smType: [String],
     file: _File,
-    proyect: _Proyect
+    proyect: _Proyect,
+    category: String
 });
 const Model = mongoose.model('file', _Model, 'Files');
 

@@ -7,7 +7,7 @@
 <body>
     <%- include("../partials/nav.ejs", {active: ""}) -%>
 
-    <h1 class="text-center">Downloaded</h1>
+    <h1 class="text-center">Downloading</h1>
 
     <div class="text-center">
         <a href="/" class="btn btn-primary">Go to menu</a>
@@ -17,7 +17,7 @@
 
     <script>
     const elm = document.createElement("a");
-    elm.setAttribute("href", "data:<%= file.type %>;base64,<%= file.buffer.toString('base64')%>")
+    elm.setAttribute("href", "<%= file.url%>")
     elm.setAttribute('download', "<%= file.name %>");
     elm.style.display = "none"; document.body.appendChild(elm); 
     elm.click(); 

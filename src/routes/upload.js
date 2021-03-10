@@ -78,7 +78,8 @@ function SaveFile(Path, File) {
             proyect: {
                 path: Path,
                 name: 'NoName'
-            }
+            },
+            category: File.Category
         });
         if(!m.success) {
             console.error(m.data);
@@ -116,6 +117,7 @@ router.get('/', (req, res) => {
 router.post("/", async (req, res) => {
     const File = req.files.file;
     File.name = req.body.dirName + "." + (File.name.split('.').slice(1).join('.'));
+    File.Category = req.body.type;
 
     const PATH = `./src/public/UPLOAD/`;
     let sf;
