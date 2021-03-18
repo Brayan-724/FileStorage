@@ -1,3 +1,37 @@
+/*  */
+body  {
+	background-color: #e7e7e7;
+	animation: first-show 1s ease-out;
+}
+
+/*  */
 .icon {
 	color: #ca7402 !important;
+}
+
+/* Navbar */
+.header {
+	max-width: 1000px !important;
+	margin: auto;
+}
+
+/* Footer */
+div.footer>div {
+	height: 204px;
+}
+
+div.footer a.link-dark {
+	color: #8b8b8b;
+	text-decoration: none;
+}
+
+/* Animations */
+@keyframes first-show {
+	0% {
+		opacity: 0;
+	}
+
+	70% {
+		opacity: 1;
+	}
 }

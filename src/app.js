@@ -34,6 +34,7 @@ app.use('/f', Routes.viewFileR);
 app.use('/r', Routes.removeR);
 app.use('/d', Routes.downloadR);
 app.use('/tmp', Routes.tmpR);
+app.use('/test', Routes.testsR);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
