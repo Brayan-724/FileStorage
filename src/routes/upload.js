@@ -110,25 +110,32 @@ function SaveFiles(Path, Files) {
     })
 }
 
-router.get('/', (req, res) => {
-    res.render('upload');
-});
 
-router.post("/", async (req, res) => {
-    const File = req.files.file;
-    File.name = req.body.dirName + "." + (File.name.split('.').slice(1).join('.'));
-    File.Category = req.body.type;
+exports = module.exports = function() {
+    router.get('/', (req, res) => {
+        res.render('upload');
+    });
+    
+    router.post("/", async (req, res) => {
+        const File = req.files.file;
+        File.name = req.body.dirName + "." + (File.name.split('.').slice(1).join('.'));
+        File.Category = req.body.type;
+    
+        const PATH = `./src/public/UPLOAD/`;
+        let sf;
+        if(Array.isArray(File)) sf = await SaveFiles(PATH, File);
+        else sf = await SaveFile(PATH, File);
+    
+        if(sf.up) {
+            res.status(200).render('uploaded');
+        } else {
+            res.status(500).render('error', {message: sf.err.message, error: sf.err})
+        };
+    });
 
-    const PATH = `./src/public/UPLOAD/`;
-    let sf;
-    if(Array.isArray(File)) sf = await SaveFiles(PATH, File);
-    else sf = await SaveFile(PATH, File);
+    return router;
+};
 
-    if(sf.up) {
-        res.status(200).render('uploaded');
-    } else {
-        res.status(500).render('error', {message: sf.err.message, error: sf.err})
-    };
-});
-
-module.exports = router;
+exports.r = router;
+exports.thisRoute = "/u";
+exports.allRoutes = [""];

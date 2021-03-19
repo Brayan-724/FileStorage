@@ -6,8 +6,15 @@
 
     <style>
         .body>.present {
-            background-color: rgb(29, 57, 141);
+            background-color: rgb(0 94 169);
+            background-image: url(/img/blue-storage.jpg);
+            background-size: cover;
+            background-blend-mode: multiply;
             color: white;
+        }
+
+        .body>.present>div>div.container {
+            font-family: serif;
         }
     </style>
 </head>
@@ -20,7 +27,7 @@
                 <div class="mb-4">
                     <span class="fs-1 fw-bold"> Welcome to Files Storage </span>
                 </div>
-                <div class="container w-75">
+                <div class="container w-75 fw-bold">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>
                     Cenasti in vita numquam bene, cum omnia in ista Consumis squilla atque acupensere cum decimano. <br> 
                     An me, inquam, nisi te audire vellem, censes haec dicturum fuisse? 
@@ -38,7 +45,7 @@
                     <div class="card border-secondary h-100 text-center">
 
                         <div class="card-body">
-                            <h5 class="card-title"> Free </h5>
+                            <h5 class="card-title"> Basic </h5>
                             <div class="card-text"> 
                                 <table class="table table-striped">
                                     <thead>
@@ -57,7 +64,7 @@
                                     </tr>
                                 </table>
 
-                                <a href="/" class="btn btn-primary"> Sign Up </a>
+                                <a href="/signup?r=basic" class="btn btn-primary"> Free </a>
                             </div>
                         </div>
                     </div>
@@ -86,7 +93,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <a href="/" class="btn btn-primary"> Sign Up </a>
+                            <a href="/signup?r=premium" class="btn btn-primary"> $99 MXN </a>
                         </div>
                     </div>
                 </div>

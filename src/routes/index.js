@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index');
-});
+exports = module.exports = function() {
+	/* GET home page. */
+	router.get('/', function(req, res, next) {
+		res.render('index');
+	});
+};
 
-module.exports = router;
+exports.r = router;
+exports.thisRoute = "/";
+exports.allRoutes = [""];

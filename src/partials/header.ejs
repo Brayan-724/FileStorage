@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/css/style.css">
 
 <!-- Redirect only to Https -->
-<script>
+<script defer async="false">
 (()=>{
     function isInDevelopment(){
         return new URL(window.location.href).hostname.match(/^([0-9]\.?)*$/) !== null;
@@ -27,4 +27,20 @@
         };
     }
 })();
+
+setTimeout(() => {
+    document.body.classList.add("showed");
+    [...document.querySelectorAll("a")].forEach(elm => {
+        if(!elm.href.match(/#.*/)) {
+            elm.addEventListener("click", () => {
+                document.body.classList.remove("showed");
+                document.body.classList.add("hidden");
+            })
+        }
+    });
+}, 500);
+
 </script>
+
+<!-- Font Awesome -->
+<script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>

@@ -1,7 +1,15 @@
 /*  */
 body  {
 	background-color: #e7e7e7;
-	animation: first-show 1s ease-out;
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+body.hidden {
+	opacity: 0;
+}
+body.showed {
+	opacity: 1;
 }
 
 /*  */
@@ -23,15 +31,4 @@ div.footer>div {
 div.footer a.link-dark {
 	color: #8b8b8b;
 	text-decoration: none;
-}
-
-/* Animations */
-@keyframes first-show {
-	0% {
-		opacity: 0;
-	}
-
-	70% {
-		opacity: 1;
-	}
 }

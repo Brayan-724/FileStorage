@@ -56,40 +56,45 @@ function Sorting(files, mode) {
 }
 
 const router = Router();
-router.get("/", async (req, res) => {
-    const r = (await getAll());
-    if(r.success) {
-        const query = req.query;
-        query.only = query.only && query.only !== "null" ? query.only.split("_") : "ALL";
-        query.sort = query.sort || "NONE";
 
-        const files =  r.data;
-        let outFiles = files;
-
-        if(query.only !== "ALL") {
-            outFiles = outFiles.filter(e => {
-                return query.only.find(t => {
-                    return e.smType ? e.smType.find(r => {
-                        return r ===  t;
-                    }) ? true : false 
-                    : false
-                }) ? true : false
-            });
+exports = module.exports = function() {
+    router.get("/", async (req, res) => {
+        const r = (await getAll());
+        if(r.success) {
+            const query = req.query;
+            query.only = query.only && query.only !== "null" ? query.only.split("_") : "ALL";
+            query.sort = query.sort || "NONE";
+    
+            const files =  r.data;
+            let outFiles = files;
+    
+            if(query.only !== "ALL") {
+                outFiles = outFiles.filter(e => {
+                    return query.only.find(t => {
+                        return e.smType ? e.smType.find(r => {
+                            return r ===  t;
+                        }) ? true : false 
+                        : false
+                    }) ? true : false
+                });
+            }
+            Sorting(outFiles)
+    
+            res.locals.files = outFiles.map(Resolve);
+            res.status(200);
+            res.render('files');
+        } else {
+            res.locals.message = "Error";
+            res.locals.error = r.data;
+    
+            res.status(r.data.status);
+            res.render("error");
         }
-        Sorting(outFiles)
+    });
+    
+    router.get("/c/:path(*)", async (req, res) => {})
+};
 
-        res.locals.files = outFiles.map(Resolve);
-        res.status(200);
-        res.render('files');
-    } else {
-        res.locals.message = "Error";
-        res.locals.error = r.data;
-
-        res.status(r.data.status);
-        res.render("error");
-    }
-});
-
-router.get("/c/:path(*)", async (req, res) => {})
-
-module.exports = router;
+exports.r = router;
+exports.thisRoute = "/fl";
+exports.allRoutes = ["", "/c/*"];
