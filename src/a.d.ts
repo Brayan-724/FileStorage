@@ -23,7 +23,10 @@ namespace Routes {
 
     type AuthFunction = (req: Request, res: Response, next: NextFunction) => {};
     type AdminAuthFunction = (req: Request, res: Response, next: NextFunction) => {};
-    
+
+    type _exports_callback = (router: Router, Auth: AuthFunction, AdminAuth: AdminAuthFunction) => {}
+
+    declare function _exports(route: string, callback: _exports_callback): Route;
     declare function pFunc(v: Route): void;
 
     declare function relFunc(v: Route): string[];

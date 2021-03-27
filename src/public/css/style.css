@@ -1,6 +1,18 @@
+/* Normalize */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(29, 160, 212);
+}
+
 /*  */
 body  {
-	background-color: #e7e7e7;
+	background-color: #2f343a;
 	opacity: 0;
 	transition: opacity 1s;
 }
@@ -21,6 +33,15 @@ body.showed {
 .header {
 	max-width: 1000px !important;
 	margin: auto;
+
+	background-color: #2f343a;
+
+	margin-bottom: 0px;
+}
+
+.header__title {
+	color: ivory;
+	letter-spacing: 2px;
 }
 
 /* Footer */
@@ -31,4 +52,14 @@ div.footer>div {
 div.footer a.link-dark {
 	color: #8b8b8b;
 	text-decoration: none;
+}
+
+@media screen and (max-width: 750px) {
+	.header {
+		background-color: #24292e;
+	}
+
+	body {
+		background-color: #24292e;
+	}
 }

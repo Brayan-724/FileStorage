@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node src/bin/www",
-    "dev": "nodemon src/bin/www",
+    "start": "node src/bin/www deployed",
+    "dev": "nodemon src/bin/www dev",
     "publish": "git add . &  git commit -am \"AutoCommited\" & git push heroku master & git push repo master"
   },
   "dependencies": {

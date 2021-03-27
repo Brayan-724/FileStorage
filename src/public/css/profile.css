@@ -1,0 +1,160 @@
+body > .parent {
+	display: grid;
+	grid-template-columns: minmax(150px, 25%) 1fr;
+
+	height: 100vh;
+}
+
+.parent > div {
+	color: white;
+}
+
+.left-side {
+	background-color: #24292e;
+	justify-content: center;
+	display: block;
+	padding-top: 2rem;
+}
+
+.left-side__header > hr {
+	display: block;
+	height: 2px;
+	border-radius: 50%;
+	opacity: .7;
+	background-color: rgb(71, 71, 71);
+}
+
+.main {
+	background-color: #394047;
+}
+
+
+.user {
+	display: flex;
+	width: 100%;
+	height: 50px;
+
+	justify-content: center;
+}
+
+.user__userInfo  {
+	padding: 1rem 2rem 1rem 1rem;
+	display: flex;
+	width: 80%;
+	align-items: center;
+}
+
+.user__img {
+	display: flex;
+
+	background-color: rgba(0, 0, 0, 255);
+
+	width: 32px;
+	height: 32px;
+	margin-right: 5px;
+
+	border-radius: 50%;
+}
+
+.user__name {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	width: 50%;
+
+	/* font-size: 1.5rem; */
+	font-size: 1.7ch;
+
+	-webkit-line-clamp: 0;
+}
+
+
+.left-side-section {
+	padding: 1rem 2rem;
+}
+
+.left-side-section__header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.left-side-section__title {
+	font-size: 1.4rem;
+}
+
+.left-side-section__button button {
+	border-radius: 7px;
+}
+
+.left-side-section__body {
+	width: 100%;
+	text-align: -webkit-right;
+	font-size: 1.3rem;
+}
+
+.left-side-section__body > div {
+	width: 90%;
+}
+
+
+.proyects div {
+	/* background-color: #0481ff36; */
+}
+
+.proyects-list-element {
+	display: flex;
+}
+
+.proyects-list-element__icon {
+	margin-right: 1rem;
+}
+
+@media screen and (max-width: 750px) {
+	.parent {
+		/* display: flex !important;
+		flex-direction: column; */
+		grid-template-rows: 1fr 1fr;
+		grid-template-columns: none !important;
+	}
+
+	.parent > main {
+		height: inherit;
+	}
+
+	.user {
+		justify-content: center;
+	}
+
+	.left-side {
+		background-color: #394047;
+		padding-top: 0px !important;
+	}
+
+	.left-side__header {
+		background-color: #24292e;
+	}
+
+	.left-side__header > hr {
+		margin: 0px;
+	}
+
+	.left-side__body {
+		padding: 0px 2rem 0px 2rem;
+	}
+
+	.left-side-section {
+		background-color: #24292e;
+		display: flex;
+		flex-direction: column;
+		margin: 1rem;
+		border-radius: 10px;
+	}
+
+	.left-side-section__body {
+		width: 100%;
+		text-align: -webkit-right;
+	}
+	.left-side-section__body > div {
+		width: 90%;
+	}
+}
