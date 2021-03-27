@@ -1,3 +1,9 @@
+:root {
+	--bg-dark-0: #24292e;
+	--bg-dark-1: #2f343a;
+	--bg-dark-2: #8b8b8b;
+}
+
 /* Normalize */
 * {
 	margin: 0;
@@ -12,7 +18,7 @@ a {
 
 /*  */
 body  {
-	background-color: #2f343a;
+	background-color: var(--bg-dark-1);
 	opacity: 0;
 	transition: opacity 1s;
 }
@@ -43,6 +49,19 @@ body.showed {
 	color: ivory;
 	letter-spacing: 2px;
 }
+
+
+.form {
+	background-color: #24292e;
+	color: #e7e7e7;
+	
+	padding: 2rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+
+	border-radius: 10px;
+}
+
 
 /* Footer */
 div.footer>div {

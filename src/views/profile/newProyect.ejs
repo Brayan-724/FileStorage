@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include("../../partials/header") %> 
+	<title>New Proyect - <%= user.name %> </title>
+</head>
+<body>
+	<%- include("../../partials/nav") %>
+
+	<div class="container">
+		<div class="form">
+			<form class="row g-3 needs-validation" novalidate action="n" method="post" enctype="multipart/form-data">
+				<div class="col">
+					<label for="proyectName" class="form-label"> Proyect Name </label>
+					<input type="text" class="form-control" required id="proyectName" name="proyectName">
+					<div class="invalid-feedback">
+						Write something
+					</div>
+				</div>
+
+				<div class="col">
+					<label for="visibility" class="form-label"> Visibility: </label>
+					<select name="visibility" id="visibility" class="form-select">
+						<option value="public"> public </option>
+						<option value="private" selected> private  </option>
+					</select>
+				</div>
+				
+				<button type="submit" class="btn btn-primary"> Create </button>
+			</form>
+		</div>
+	</div>
+
+	<%- include("../../partials/footer") %> 
+	<%- include("../../partials/formValidationScript") %> 
+</body>
+</html>
