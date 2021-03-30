@@ -1,7 +1,9 @@
 :root {
 	--bg-dark-0: #24292e;
-	--bg-dark-1: #2f343a;
-	--bg-dark-2: #8b8b8b;
+	--bg-dark-1: #24292e;
+	--bg-dark-2: #2f343a;
+	--bg-dark-3: #394047;
+	--bg-dark-4: #8b8b8b;
 }
 
 /* Normalize */
@@ -18,7 +20,7 @@ a {
 
 /*  */
 body  {
-	background-color: var(--bg-dark-1);
+	background-color: var(--bg-dark-2);
 	opacity: 0;
 	transition: opacity 1s;
 }
@@ -40,7 +42,7 @@ body.showed {
 	max-width: 1000px !important;
 	margin: auto;
 
-	background-color: #2f343a;
+	background-color: var(--bg-dark-2);
 
 	margin-bottom: 0px;
 }
@@ -73,6 +75,65 @@ div.footer a.link-dark {
 	text-decoration: none;
 }
 
+/* Card */
+.card {
+	background-color: var(--bg-dark-3);
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.card__header {
+	padding: 1rem;
+	justify-content: center;
+	display: flex;
+	font-size: 24px;
+	font-weight: bold;
+	text-shadow: 0px 0px 6px #000;
+}
+
+.card__body {
+	padding: 1rem;
+}
+
+.card__footer {
+	display: flex;
+	justify-content: center;
+	/* padding: 0px 0px 1rem 0px; */
+	font-family: 'Poppins', sans-serif;
+}
+
+/* Form */
+form {
+	text-align: center;
+}
+
+form label {
+	font-size: 14px;
+	display: flex;
+	justify-content: space-between;
+}
+
+form > .inputs > div {
+	margin-bottom: 1rem;
+}
+
+/* Extras */
+.center {
+	justify-content: center;
+	display: flex;
+}
+
+.container {
+	color: white;
+}
+
+.w-200 {
+	width: 400px;
+}
+
+/* Responsive */
 @media screen and (max-width: 750px) {
 	.header {
 		background-color: #24292e;

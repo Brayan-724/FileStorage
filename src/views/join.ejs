@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include("../partials/header") %> 
+	<title>Join - File Storage</title>
+</head>
+<body>
+	<%- include("../partials/nav") %>
+
+	<div class="container mt-5 mb-5">
+		<div class="center">
+			<div class="card w-200">
+				<div class="card__header">
+					Sign Up
+				</div>
+				<div class="card__body">
+					<form action="/join" method="post">
+						<div class="inputs mb-4">
+							<div>
+								<label for="user" class="form-label">Username</label>
+								<input type="username" name="user" id="user" class="form-control">
+							</div>
+
+							<div>
+								<label for="email" class="form-label">Email</label>
+								<input type="email" name="email" id="email" class="form-control">
+							</div>
+							
+							<div>
+								<label for="password" class="form-label">
+									<span>Password</span>
+								</label>
+								<input type="password" name="password" id="password" class="form-control">
+							</div>
+						</div>
+						
+						<div class="buttons">
+							<button type="submit" class="btn btn-primary w-100">Sign Up</button>
+						</div>
+					</form>
+				</div>
+				<div class="card__footer">
+					<span> Do you have a acount? <a href="/signin">Sign In</a> </span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<%- include("../partials/footer") %>
+</body>
+</html>

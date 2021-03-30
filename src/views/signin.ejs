@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include("../partials/header") %> 
+	<title>Sign In - File Storage</title>
+</head>
+<body>
+	<%- include("../partials/nav") %> 
+
+	<div class="container mt-5 mb-5">
+		<div class="center">
+			<div class="card w-200">
+				<div class="card__header">
+					Sign In
+				</div>
+				<div class="card__body">
+					<form class="needs-validation" novalidate action="/signin?land=https://file-storage-0.herokuapp.com/p/{user}" method="post">
+						<div class="inputs mb-4">
+							<div>
+								<label for="user" class="form-label">Username</label>
+								<input type="username" required name="user" id="user" class="form-control">
+								<div class="invalid-feedback">
+									Write something
+								</div>
+							</div>
+							
+							<div>
+								<label for="password" class="form-label">
+									<span>Password</span>
+									<a href="#"> Forgot password?</a>
+								</label>
+								<input type="password" required name="password" id="password" class="form-control">
+								<div class="invalid-feedback">
+									Write something
+								</div>
+							</div>
+						</div>
+						
+						<div class="buttons">
+							<button type="submit" class="btn btn-primary w-100">Sign In</button>
+						</div>
+					</form>
+				</div>
+				<div class="card__footer">
+					<span> Don't you have a acount? <a href="#">Sign Up</a> </span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<%- include("../partials/footer") %> 
+	<%- include("../partials/formValidationScript") %> 
+</body>
+</html>

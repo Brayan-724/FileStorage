@@ -9,6 +9,9 @@ const rts = [
     require('./routes/tmp.js'),
     require('./routes/tests.js'),
 
+    require("./routes/join"),
+    require("./routes/signin"),
+
     require('./routes/profile')
 ]
 

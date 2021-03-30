@@ -33,16 +33,6 @@ const db = require('./helpers/mongo')(process.env.DB_URL);
 // Import routes
 let Routes = require('./Routes')(app, auth, adminAuth);
 
-// Add Routes
-// app.use('/', Routes.indexR);
-// app.use('/fl', Routes.filesR);
-// app.use('/u', Routes.uploadR);
-// app.use('/f', Routes.viewFileR);
-// app.use('/r', Routes.removeR);
-// app.use('/d', Routes.downloadR);
-// app.use('/tmp', Routes.tmpR);
-// app.use('/test', Routes.testsR);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
 	next(createError(404));
@@ -98,7 +88,7 @@ function adminAuth(req, res, next) {
 			return false;
 		}
 	} else {
-		throw new Error("Something  in auth")
+		throw new Error("Something in auth");
 	}
 }
 
@@ -109,7 +99,7 @@ function adminAuth(req, res, next) {
  */
 function aAuth(req, res) {
 	if(isLogged(req, res)) return true;
-	res.redirect("/signup");
+	res.redirect("/join");
 	return false;
 }
 

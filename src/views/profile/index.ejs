@@ -31,7 +31,7 @@
                         </div>
     
                         <div class="left-side-section__button">
-                            <button class="btn btn-success" onclick="window.location.href = window.location.href + '/n'">
+                            <button class="btn btn-success" onclick="NewProyect()">
                                 <i class="fas fa-plus"></i>
                                 New
                             </button>
@@ -81,5 +81,11 @@
 
         </main>
     </div>
+
+    <script>
+        function NewProyect() {
+            window.location = window.location.pathname + "/n";
+        }
+    </script>
 </body>
 </html>

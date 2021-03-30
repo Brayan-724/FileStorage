@@ -9,14 +9,16 @@
             }
         </style>
     </head>
-    <body>
+    <body class="text-light">
         <%- include('../partials/nav', {active: ''}) -%>
-        <h1><%= message %>: <%= error.status %></h1>
-        <p>
-            <span>Stack:</span>
-            <pre><%= error.stack %></pre>
-        </p>
-        <a href="/" class="btn btn-primary">Go to Menu</a>
+        <div class="container mt-4 mb-4">
+            <h1><%= message %>: <%= error.status %></h1>
+            <p>
+                <span>Stack:</span>
+                <pre><%= error.stack %></pre>
+            </p>
+            <a href="/" class="btn btn-primary">Go to Menu</a>
+        </div>
         <%- include('../partials/footer') -%>
     </body>
 </html>
