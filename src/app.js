@@ -1,17 +1,16 @@
 const createError = require('http-errors');
 const express = require('express');
 const session = require('express-session');
-const path = require('path');
+const { join } = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const fileUpload = require('express-fileupload');
-const mongoose = require('mongoose');
 require('dotenv').config({path: 'variables.env'});
 
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(session({
@@ -25,10 +24,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Init mongo database
-const db = require('./helpers/mongo')(process.env.DB_URL);
+app.use(express.static(join(__dirname, 'public')));
 
 // Import routes
 let Routes = require('./Routes')(app, auth, adminAuth);

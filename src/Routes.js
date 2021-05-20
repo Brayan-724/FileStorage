@@ -5,14 +5,14 @@ const rts = [
     require('./routes/files'),
     require('./routes/viewFile'),
     require('./routes/remove'),
-    require('./routes/download'),
-    require('./routes/tmp.js'),
-    require('./routes/tests.js'),
+    // require('./routes/download'),
+    // require('./routes/tmp.js'),
+    // require('./routes/tests.js'),
 
-    require("./routes/join"),
-    require("./routes/signin"),
+    // require("./routes/acount/join"),
+    // require("./routes/acount/signin"),
 
-    require('./routes/profile')
+    // require('./routes/profile')
 ]
 
 /** @type {import("./Routes")} */

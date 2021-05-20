@@ -1,8 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-const { join } = require('path');
-const timers = require("timers");
-const { getBy } = require('../models/file/controller');
+const { resolve, join } = require('path');
 const router = express.Router();
 
 exports = module.exports = function() {
@@ -10,20 +8,22 @@ exports = module.exports = function() {
         //res.render("index");
     
         const fileName = req.params.fileName;
-        const file = await getBy({fileName: fileName});
+        const file = await getBy({"guid": fileName});
     
         if(file.success && file.data.length > 0) {
-            const tmpName = `FILE-${new Array(50).fill(0).map((e, i, a) => {
+            const tmpName = `FILE-${new Array(15).fill(0).map((e, i, a) => {
                 const isUpper = Math.random() > .5;
-                const letter = Math.floor(Math.random() * 27);
+                const letter = Math.floor(Math.random() * 26);
                 const Letter = isUpper ? letter + 65 : letter + 97;
                 return String.fromCharCode(Letter);
-            }).join("")}-${fileName}`;
+            }).join("")}-${file.data[0].file.name}`;
     
-            const fileURL = join(__dirname, "tmp", tmpName);
+            const fileURL = resolve(__dirname, join("..", "public", "tmp", tmpName));
     
             fs.writeFile(fileURL, file.data[0].file.data, (err) => {
                 if(err) res.status(500).render('error', {message: 'Something error', error: err});
+
+                setTimeout(fs.unlinkSync, 10000, fileURL);
     
                 res.locals.file = {
                     name: fileName,

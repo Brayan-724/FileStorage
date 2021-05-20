@@ -23,9 +23,9 @@
 						<a class="btn bt-primary" data-bs-toggle="collapse" aria-expanded="false" href="#View<%= i %>"  aria-controls="View<%= i %>" role="button"><%= file.name %></a>
 						<div class="collapse mt-1" id="View<%= i %>">
 							<div class="card card-body shadow">
-								<a href="/f/<%= file.name %>" type="button" class="btn btn-primary">View</a>
-								<a href="/d/<%= file.name %>" type="button" class="btn btn-warning">Download</a>
-								<a href="/r/<%= file.name %>" type="button" class="btn btn-danger">Delete</a>
+								<a href="/f/<%= file.guid %>" type="button" class="btn btn-primary">View</a>
+								<a href="/d/<%= file.guid %>" type="button" class="btn btn-warning">Download</a>
+								<a href="/r/<%= file.guid %>" type="button" class="btn btn-danger">Delete</a>
 							</div>
 						</div>
 						<% i++ %>

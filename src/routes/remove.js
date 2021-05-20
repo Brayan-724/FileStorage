@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const CTRL = require('../models/file/controller');
 const router = Router();
+const { request } = require('../helpers/rest-req');
 
 exports = module.exports = function() {
     router.get('/:fileName', (req, res) => {
@@ -13,12 +13,9 @@ exports = module.exports = function() {
     router.post('/:fileName', async (req, res) => {
         const fileName = req.params.fileName;
     
-        const a = await CTRL.getBy({fileName: fileName});
-        if(a.success && a.data.length > 0) {
-            a.data.forEach(e => {
-                CTRL.remove(e._id);
-            })
-        }
+        await request("/file/remove", "POST", {
+            guid: fileName
+        });
     
         res.render('uploaded');
     });

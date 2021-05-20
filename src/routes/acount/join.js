@@ -1,6 +1,6 @@
-module.exports = require("../helpers/Routes/exports")("/join", (router, Auth, AdminAuth) => {
+module.exports = require("../../helpers/Routes/exports")("/join", (router, Auth, AdminAuth) => {
 	router.get("/", (req, res) => {
-		res.render("join");
+		res.render("acount/join");
 	})
 
 	router.post("/", (req, res) => {

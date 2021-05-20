@@ -1,12 +1,12 @@
 const { Router } = require("express");
-const { parse: urlParse } = require("url");
-const { getAll } = require('../models/file/controller');
+const { request } = require("../helpers/rest-req");
 
 
 function Resolve(data) {
+    console.log(data, data.guid);
     return {
-        url: data.url,
-        name: data.fileName
+        guid: data.guid,
+        name: data.file.name
     }
 }
 
@@ -55,11 +55,21 @@ function Sorting(files, mode) {
     return files;
 }
 
+async function requestAll() {
+    const [req] = await request("/files/getAll", "GET", {});
+    
+    return req.data;
+}
+
 const router = Router();
 
 exports = module.exports = function() {
     router.get("/", async (req, res) => {
-        const r = (await getAll());
+        
+        const r = await requestAll();
+
+        console.log(r);
+
         if(r.success) {
             const query = req.query;
             query.only = query.only && query.only !== "null" ? query.only.split("_") : "ALL";
@@ -71,10 +81,7 @@ exports = module.exports = function() {
             if(query.only !== "ALL") {
                 outFiles = outFiles.filter(e => {
                     return query.only.find(t => {
-                        return e.smType ? e.smType.find(r => {
-                            return r ===  t;
-                        }) ? true : false 
-                        : false
+                        return e.file.type === t;
                     }) ? true : false
                 });
             }
