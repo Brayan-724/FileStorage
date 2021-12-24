@@ -13,7 +13,7 @@
     "cookie-parser": "^1.4.5",
     "debug": "^2.6.9",
     "dot-env": "0.0.1",
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.6.0",
     "ejs": "^2.7.4",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
