@@ -8,7 +8,7 @@
     "publish": "git add . &  git commit -am \"AutoCommited\" & git push heroku master & git push repo master"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.6.8",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "debug": "^2.6.9",
@@ -20,7 +20,7 @@
     "express-session": "^1.17.1",
     "form-data": "^4.0.0",
     "http-errors": "^1.8.0",
-    "mongoose": "^5.12.0",
+    "mongoose": "^5.12.4",
     "morgan": "^1.10.0",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
