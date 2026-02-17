@@ -8,14 +8,14 @@
     "publish": "git add . &  git commit -am \"AutoCommited\" & git push heroku master & git push repo master"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "body-parser": "^1.19.0",
+    "axios": "^1.13.5",
+    "body-parser": "^1.20.4",
     "cookie-parser": "^1.4.5",
     "debug": "^2.6.9",
     "dot-env": "0.0.1",
     "dotenv": "^8.2.0",
     "ejs": "^2.7.4",
-    "express": "^4.17.1",
+    "express": "^4.22.0",
     "express-fileupload": "^1.2.1",
     "express-session": "^1.17.1",
     "form-data": "^4.0.0",
